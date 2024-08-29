@@ -1,0 +1,1397 @@
+@prefix : <https://w3id.org/tav#> .
+@prefix wd: <https://www.wikidata.org/entity/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix tav: <https://w3id.org/tav#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <https://w3id.org/tav> .
+
+<https://w3id.org/tav> rdf:type owl:Ontology ;
+                        owl:versionIRI <https://w3id.org/tav/1.0> ;
+                        <http://purl.org/dc/terms/contributor> "Stephen H. Blackwell"@en ;
+                        <http://purl.org/dc/terms/creator> "Shakeeb Arzoo"@en ,
+                                                           "http://aidanhogan.com/foaf.rdf#me" ;
+                        <http://purl.org/dc/terms/date> "2024-08-12" ;
+                        <http://purl.org/dc/terms/description> "Tree Annotation Vocabulary (TAV) is an RDF vocabulary to describe the mentions of tree-like entities in literary works and link them to external databases to enrich their contextual background."@en ;
+                        <http://purl.org/dc/terms/title> "TAV: Tree Annotation Vocabulary"@en ;
+                        rdfs:seeAlso "https://doi.org/10.5281/zenodo.13382194"@en ;
+                        tav:competencyQuestion "1. Where does (X) tree appear in a work by Nabokov? 2. What botanical species are appropriate for the (X) tree appearing in Nabokov? 3. Where does (X) tree appear in Nabokov’s entire oeuvre? 4. What places are associated with (X) tree in a work by Nabokov? 5. What Nabokovian characters are associated with (X) tree? 6. What literary themes are associated with (X) tree in a work by Nabokov? 7. What other trees are associated with (X) tree? 8. What wooden objects (Y) are thematically significant in a work by Nabokov? 9. What wooden objects (Y) are products of (X) tree? 10. What other notable authors or creative works mention these (X) tree?"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/date
+<http://purl.org/dc/terms/date> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf skos:note .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf rdfs:label .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf skos:note .
+
+
+###  https://w3id.org/tav#competencyQuestion
+tav:competencyQuestion rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#broadMatch
+skos:broadMatch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf skos:broader ,
+                                   skos:mappingRelation ;
+                owl:inverseOf skos:narrowMatch ;
+                rdfs:label "has broader match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf skos:semanticRelation ;
+             owl:inverseOf skos:narrower ;
+             rdfs:label "has broader"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf skos:mappingRelation ;
+                rdfs:label "has close match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+skos:exactMatch rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf skos:closeMatch ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:label "has exact match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#mappingRelation
+skos:mappingRelation rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf skos:semanticRelation ;
+                     rdfs:label "is in mapping relation with"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrowMatch
+skos:narrowMatch rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf skos:mappingRelation ,
+                                    skos:narrower ;
+                 rdfs:label "has narrow match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrower
+skos:narrower rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf skos:semanticRelation ;
+              rdfs:label "has narrower"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#related
+skos:related rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf skos:semanticRelation ;
+             rdf:type owl:SymmetricProperty ;
+             rdfs:label "has related match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf skos:mappingRelation ,
+                                     skos:related ;
+                  rdf:type owl:SymmetricProperty ;
+                  rdfs:label "has related match"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#semanticRelation
+skos:semanticRelation rdf:type owl:ObjectProperty ;
+                      rdfs:domain skos:Concept ;
+                      rdfs:range skos:Concept ;
+                      rdfs:label "is in semantic relation with"@en .
+
+
+###  https://w3id.org/tav#authorOf
+tav:authorOf rdf:type owl:ObjectProperty ;
+             owl:inverseOf tav:hasAuthor ;
+             rdfs:domain tav:Agent ;
+             rdfs:range tav:CreativeWork ;
+             rdfs:label "author of"@en .
+
+
+###  https://w3id.org/tav#body
+tav:body rdf:type owl:ObjectProperty ;
+         rdfs:domain tav:LiteraryAnnotation ;
+         rdfs:label "has body"@en .
+
+
+###  https://w3id.org/tav#characterIn
+tav:characterIn rdf:type owl:ObjectProperty ;
+                owl:inverseOf tav:hasCharacter ;
+                rdfs:domain tav:Person ;
+                rdfs:range tav:CreativeWork ;
+                rdfs:label "character in"@en .
+
+
+###  https://w3id.org/tav#containedInRegion
+tav:containedInRegion rdf:type owl:ObjectProperty ;
+                      owl:inverseOf tav:containsRegion ;
+                      rdfs:domain tav:Region ;
+                      rdfs:range tav:Region ;
+                      rdfs:label "contained in region"@en .
+
+
+###  https://w3id.org/tav#containsReferenceTo
+tav:containsReferenceTo rdf:type owl:ObjectProperty ;
+                        owl:inverseOf tav:referencedIn ;
+                        rdfs:domain tav:CreativeWork ;
+                        rdfs:range owl:Thing ;
+                        rdfs:label "contains reference to"@en .
+
+
+###  https://w3id.org/tav#containsRegion
+tav:containsRegion rdf:type owl:ObjectProperty ;
+                   rdfs:domain tav:Region ;
+                   rdfs:range tav:Region ;
+                   rdfs:label "contains region"@en .
+
+
+###  https://w3id.org/tav#contentLanguage
+tav:contentLanguage rdf:type owl:ObjectProperty ;
+                    rdfs:domain tav:CreativeWork ;
+                    rdfs:range tav:Language ;
+                    rdfs:label "has content language"@en .
+
+
+###  https://w3id.org/tav#exoticToLocation
+tav:exoticToLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain tav:Plant ;
+                     rdfs:range tav:Region ;
+                     rdfs:label "exotic to location"@en .
+
+
+###  https://w3id.org/tav#hasAuthor
+tav:hasAuthor rdf:type owl:ObjectProperty ;
+              rdfs:domain tav:CreativeWork ;
+              rdfs:range tav:Agent ;
+              rdfs:label "has author"@en .
+
+
+###  https://w3id.org/tav#hasCharacter
+tav:hasCharacter rdf:type owl:ObjectProperty ;
+                 rdfs:domain tav:CreativeWork ;
+                 rdfs:range tav:Person ;
+                 rdfs:label "has character"@en .
+
+
+###  https://w3id.org/tav#hasItem
+tav:hasItem rdf:type owl:ObjectProperty ;
+            rdfs:domain skos:Collection ;
+            rdfs:label "has item"@en .
+
+
+###  https://w3id.org/tav#hasPublisher
+tav:hasPublisher rdf:type owl:ObjectProperty ;
+                 owl:inverseOf tav:publisherOf ;
+                 rdfs:domain tav:CreativeWork ;
+                 rdfs:range tav:Agent ;
+                 rdfs:label "has publisher"@en .
+
+
+###  https://w3id.org/tav#hasStoryLocation
+tav:hasStoryLocation rdf:type owl:ObjectProperty ;
+                     rdfs:domain tav:CreativeWork ;
+                     rdfs:range tav:Region ;
+                     rdfs:comment "Relates a narrative work to a location where the story takes place. This location may be fictional or real, and may be the primary or secondary setting for the story."@en ;
+                     rdfs:label "has story location"@en .
+
+
+###  https://w3id.org/tav#hasTranslator
+tav:hasTranslator rdf:type owl:ObjectProperty ;
+                  owl:inverseOf tav:translatorOf ;
+                  rdfs:domain tav:CreativeWork ;
+                  rdfs:range tav:Agent ;
+                  rdfs:label "has translator"@en .
+
+
+###  https://w3id.org/tav#hasWorkTranslation
+tav:hasWorkTranslation rdf:type owl:ObjectProperty ;
+                       owl:inverseOf tav:translationOfWork ;
+                       rdfs:domain tav:CreativeWork ;
+                       rdfs:range tav:CreativeWork ;
+                       rdfs:label "has work translation"@en .
+
+
+###  https://w3id.org/tav#hasWorkVersion
+tav:hasWorkVersion rdf:type owl:ObjectProperty ;
+                   owl:inverseOf tav:versionOfWork ;
+                   rdfs:domain tav:CreativeWork ;
+                   rdfs:range tav:CreativeWork ;
+                   rdfs:label "has work version"@en .
+
+
+###  https://w3id.org/tav#naturalizedToLocation
+tav:naturalizedToLocation rdf:type owl:ObjectProperty ;
+                          rdfs:domain tav:Plant ;
+                          rdfs:range tav:Region ;
+                          rdfs:label "naturalized to location"@en .
+
+
+###  https://w3id.org/tav#occursIn
+tav:occursIn rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain tav:Selector ;
+             rdfs:label "occurs in"@en .
+
+
+###  https://w3id.org/tav#placeOfPublication
+tav:placeOfPublication rdf:type owl:ObjectProperty ;
+                       rdfs:domain tav:CreativeWork ;
+                       rdfs:range tav:Region ;
+                       rdfs:label "has place of publication"@en .
+
+
+###  https://w3id.org/tav#publisherOf
+tav:publisherOf rdf:type owl:ObjectProperty ;
+                rdfs:domain tav:Agent ;
+                rdfs:range tav:CreativeWork ;
+                rdfs:label "publisher of"@en .
+
+
+###  https://w3id.org/tav#referencedIn
+tav:referencedIn rdf:type owl:ObjectProperty ;
+                 rdfs:domain owl:Thing ;
+                 rdfs:range tav:CreativeWork ;
+                 rdfs:label "referenced In"@en .
+
+
+###  https://w3id.org/tav#selector
+tav:selector rdf:type owl:ObjectProperty ;
+             rdfs:domain tav:Mention ;
+             rdfs:range tav:Selector ;
+             rdfs:label "has selector"@en .
+
+
+###  https://w3id.org/tav#source
+tav:source rdf:type owl:ObjectProperty ;
+           rdfs:domain tav:Mention ;
+           rdfs:label "has source"@en .
+
+
+###  https://w3id.org/tav#target
+tav:target rdf:type owl:ObjectProperty ;
+           rdfs:domain tav:LiteraryAnnotation ;
+           rdfs:label "has target"@en .
+
+
+###  https://w3id.org/tav#translationOfWork
+tav:translationOfWork rdf:type owl:ObjectProperty ;
+                      rdfs:domain tav:CreativeWork ;
+                      rdfs:range tav:CreativeWork ;
+                      rdfs:label "translation of work"@en .
+
+
+###  https://w3id.org/tav#translatorOf
+tav:translatorOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain tav:Agent ;
+                 rdfs:range tav:CreativeWork ;
+                 rdfs:label "translator of"@en .
+
+
+###  https://w3id.org/tav#treeProductOf
+tav:treeProductOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain tav:WoodenObject ;
+                  rdfs:range tav:Plant ;
+                  rdfs:label "is tree product of"@en .
+
+
+###  https://w3id.org/tav#versionOfWork
+tav:versionOfWork rdf:type owl:ObjectProperty ;
+                  rdfs:domain tav:CreativeWork ;
+                  rdfs:range tav:CreativeWork ;
+                  rdfs:label "version of work"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/tav#abbvTitle
+tav:abbvTitle rdf:type owl:DatatypeProperty ;
+              rdfs:domain tav:CreativeWork ;
+              rdfs:label "abbreviated title"@en .
+
+
+###  https://w3id.org/tav#alternateName
+tav:alternateName rdf:type owl:DatatypeProperty ;
+                  rdfs:domain owl:Thing ;
+                  rdfs:label "alternate name"@en .
+
+
+###  https://w3id.org/tav#bodyValue
+tav:bodyValue rdf:type owl:DatatypeProperty ;
+              rdfs:domain tav:LiteraryAnnotation ;
+              rdfs:range xsd:string ;
+              rdfs:label "body value"@en .
+
+
+###  https://w3id.org/tav#bookPart
+tav:bookPart rdf:type owl:DatatypeProperty ;
+             rdfs:domain tav:Selector ;
+             rdfs:range xsd:string ;
+             rdfs:label "book part"@en .
+
+
+###  https://w3id.org/tav#chapterLabel
+tav:chapterLabel rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf tav:bookPart ;
+                 rdfs:domain tav:DocumentSegmentSelector ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "chapter label"@en .
+
+
+###  https://w3id.org/tav#compositionYear
+tav:compositionYear rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tav:CreativeWork ;
+                    rdfs:range xsd:gYear ;
+                    rdfs:label "year of composition"@en .
+
+
+###  https://w3id.org/tav#editionName
+tav:editionName rdf:type owl:DatatypeProperty ;
+                rdfs:domain tav:Book ;
+                rdfs:comment "The name of a particular edition of book"@en ;
+                rdfs:label "edition name"@en .
+
+
+###  https://w3id.org/tav#exactText
+tav:exactText rdf:type owl:DatatypeProperty ;
+              rdfs:domain tav:TextSelector ;
+              rdfs:range xsd:string ;
+              rdfs:label "exact text"@en .
+
+
+###  https://w3id.org/tav#firstName
+tav:firstName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf tav:name ;
+              rdfs:domain tav:Person ;
+              rdfs:label "first name"@en .
+
+
+###  https://w3id.org/tav#givenName
+tav:givenName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf tav:name ;
+              rdfs:domain tav:Person ;
+              rdfs:label "given name"@en .
+
+
+###  https://w3id.org/tav#name
+tav:name rdf:type owl:DatatypeProperty ;
+         rdfs:domain owl:Thing ;
+         rdfs:label "name"@en .
+
+
+###  https://w3id.org/tav#numberOfPages
+tav:numberOfPages rdf:type owl:DatatypeProperty ;
+                  rdfs:domain tav:Document ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "number of pages"@en .
+
+
+###  https://w3id.org/tav#numberedSection
+tav:numberedSection rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tav:DocumentSegmentSelector ;
+                    rdfs:range xsd:float ;
+                    rdfs:label "numbered section"@en .
+
+
+###  https://w3id.org/tav#pageNo
+tav:pageNo rdf:type owl:DatatypeProperty ;
+           rdfs:domain tav:DocumentSegmentSelector ;
+           rdfs:range xsd:integer ;
+           rdfs:label "page number"@en .
+
+
+###  https://w3id.org/tav#prefixText
+tav:prefixText rdf:type owl:DatatypeProperty ;
+               rdfs:domain tav:TextSelector ;
+               rdfs:range xsd:string ;
+               rdfs:label "prefix text"@en .
+
+
+###  https://w3id.org/tav#publicationYear
+tav:publicationYear rdf:type owl:DatatypeProperty ;
+                    rdfs:domain tav:CreativeWork ;
+                    rdfs:range xsd:gYear ;
+                    rdfs:label "publication year"@en .
+
+
+###  https://w3id.org/tav#suffixText
+tav:suffixText rdf:type owl:DatatypeProperty ;
+               rdfs:domain tav:TextSelector ;
+               rdfs:range xsd:string ;
+               rdfs:label "suffix text"@en .
+
+
+###  https://w3id.org/tav#totalItems
+tav:totalItems rdf:type owl:DatatypeProperty ;
+               rdfs:domain skos:Collection ;
+               rdfs:range xsd:nonNegativeInteger ;
+               rdfs:label "has total number of items"@en .
+
+
+###  https://w3id.org/tav#wordCount
+tav:wordCount rdf:type owl:DatatypeProperty ;
+              rdfs:domain tav:Document ;
+              rdfs:range xsd:integer ;
+              rdfs:label "has word count" ;
+              skos:note "Only the main text."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Collection
+skos:Collection rdf:type owl:Class ;
+                rdfs:comment "A meaningful collection of concepts."@en ;
+                rdfs:label "Collection"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+             rdfs:comment "A concept is a unit of thought—ideas, meanings, or categories of objects and events."@en ;
+             rdfs:label "Concept"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#OrderedCollection
+skos:OrderedCollection rdf:type owl:Class ;
+                       rdfs:subClassOf skos:Collection ;
+                       rdfs:comment "An ordered collection of concepts, where both the grouping and the ordering are meaningful."@en ;
+                       rdfs:label "Ordered Collection"@en .
+
+
+###  https://w3id.org/tav#AdministrativeRegion
+tav:AdministrativeRegion rdf:type owl:Class ;
+                         rdfs:subClassOf tav:Region ;
+                         rdfs:comment "A geographical region defined by their administrative boundaries."@en ;
+                         rdfs:label "Administrative Region"@en .
+
+
+###  https://w3id.org/tav#Agent
+tav:Agent rdf:type owl:Class ;
+          rdfs:comment "A person, organization, or any other artifact that can act or perform some role."@en ;
+          rdfs:label "Agent"@en .
+
+
+###  https://w3id.org/tav#Anthology
+tav:Anthology rdf:type owl:Class ;
+              rdfs:subClassOf tav:CollectedDocument ;
+              rdfs:comment "A collection of selected literary documents having structural or thematic similarities."@en ;
+              rdfs:label "Anthology"@en ;
+              skos:example "Short Story Collection, American Poetry Collection"@en .
+
+
+###  https://w3id.org/tav#Article
+tav:Article rdf:type owl:Class ;
+            rdfs:subClassOf tav:Document ;
+            rdfs:comment "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine."@en ;
+            rdfs:label "Article"@en .
+
+
+###  https://w3id.org/tav#Book
+tav:Book rdf:type owl:Class ;
+         rdfs:subClassOf tav:Document ;
+         rdfs:comment "An electronic or printed work of fiction or nonfiction."@en ;
+         rdfs:label "Book"@en .
+
+
+###  https://w3id.org/tav#City
+tav:City rdf:type owl:Class ;
+         rdfs:subClassOf tav:AdministrativeRegion ;
+         rdfs:comment "A local administrative region falling under a municipality."@en ;
+         rdfs:label "City"@en .
+
+
+###  https://w3id.org/tav#CoastalArea
+tav:CoastalArea rdf:type owl:Class ;
+                rdfs:subClassOf tav:NaturalRegion ;
+                rdfs:comment "An area adjacent to a water body, such as an ocean or a sea characterized by unique natural features and ecosystems."@en ;
+                rdfs:label "CoastalArea"@en .
+
+
+###  https://w3id.org/tav#CollectedDocument
+tav:CollectedDocument rdf:type owl:Class ;
+                      rdfs:subClassOf tav:Document ;
+                      rdfs:comment "A collection of Documents or Collections."@en ;
+                      rdfs:label "Collected Document"@en .
+
+
+###  https://w3id.org/tav#Continent
+tav:Continent rdf:type owl:Class ;
+              rdfs:subClassOf tav:NaturalRegion ;
+              rdfs:comment "A continent is type of natural landform comprising a single landmass or as a part of large landmass."@en ;
+              rdfs:label "Continent"@en .
+
+
+###  https://w3id.org/tav#Country
+tav:Country rdf:type owl:Class ;
+            rdfs:subClassOf tav:AdministrativeRegion ;
+            rdfs:comment "A sovereign nation with defined borders and governance."@en ;
+            rdfs:label "Country"@en .
+
+
+###  https://w3id.org/tav#CreativeWork
+tav:CreativeWork rdf:type owl:Class ;
+                 rdfs:comment "The most generic kind of creative work."@en ;
+                 rdfs:label "Creative Work"@en .
+
+
+###  https://w3id.org/tav#Document
+tav:Document rdf:type owl:Class ;
+             rdfs:subClassOf tav:CreativeWork ;
+             rdfs:comment "A written document of mainly textual character."@en ;
+             rdfs:label "Document"@en .
+
+
+###  https://w3id.org/tav#DocumentSegmentSelector
+tav:DocumentSegmentSelector rdf:type owl:Class ;
+                            rdfs:subClassOf tav:Selector ;
+                            rdfs:comment "It describes a named segment of a document having a clear structural boundary."@en ;
+                            rdfs:label "Document Segment Selector"@en .
+
+
+###  https://w3id.org/tav#DramaticPlay
+tav:DramaticPlay rdf:type owl:Class ;
+                 rdfs:subClassOf tav:Document ;
+                 rdfs:comment "A written fictional work intended for performance on stage or screen, consisting of scripted dialogue between characters."@en ;
+                 rdfs:label "Dramatic Play"@en .
+
+
+###  https://w3id.org/tav#GeographicalRegion
+tav:GeographicalRegion rdf:type owl:Class ;
+                       rdfs:subClassOf tav:Region ;
+                       rdfs:comment "A specific area on the Earth's surface with common physical features and natural or artifical boundaries."@en ;
+                       rdfs:label "Geographical Region"@en .
+
+
+###  https://w3id.org/tav#HistoricalOrCulturalRegion
+tav:HistoricalOrCulturalRegion rdf:type owl:Class ;
+                               rdfs:subClassOf tav:GeographicalRegion ;
+                               rdfs:comment "An area defined on their shared cultural or historical characteristics, such as language or tradition."@en ;
+                               rdfs:label "Historical or Cultural Region"@en .
+
+
+###  https://w3id.org/tav#Lake
+tav:Lake rdf:type owl:Class ;
+         rdfs:subClassOf tav:WaterBody ;
+         rdfs:comment "A body of freshwater, usually surrounded by land."@en ;
+         rdfs:label "Lake"@en .
+
+
+###  https://w3id.org/tav#Language
+tav:Language rdf:type owl:Class ;
+             rdfs:comment "Natural languages that serve a communicative function, either in a written or oral form."@en ;
+             rdfs:label "Language"@en ;
+             skos:example "English, French, Hindi, Russian, Spanish"@en .
+
+
+###  https://w3id.org/tav#LiteraryAnnotation
+tav:LiteraryAnnotation rdf:type owl:Class ;
+                       rdfs:comment "A literary annotation is a set of connected resources with a body and a target, suggesting that the body is somehow associated with the target."@en ;
+                       rdfs:label "Literary Annotation"@en .
+
+
+###  https://w3id.org/tav#LiteraryTheme
+tav:LiteraryTheme rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Concept ;
+                  rdfs:comment "A recurring idea, concept, or message explored in a literary work directly or indirectly."@en ;
+                  rdfs:label "Literary Theme"@en .
+
+
+###  https://w3id.org/tav#Mention
+tav:Mention rdf:type owl:Class ;
+            rdfs:comment "A mention is a specific occurrence or reference to an entity within a specified resource that is of interest to the annotator."@en ;
+            rdfs:label "Mention"@en .
+
+
+###  https://w3id.org/tav#MountainRange
+tav:MountainRange rdf:type owl:Class ;
+                  rdfs:subClassOf tav:NaturalRegion ;
+                  rdfs:comment "A continuous elevated landform having a shared, recognizable geographical origin."@en ;
+                  rdfs:label "Mountain Range"@en .
+
+
+###  https://w3id.org/tav#NaturalRegion
+tav:NaturalRegion rdf:type owl:Class ;
+                  rdfs:subClassOf tav:GeographicalRegion ;
+                  rdfs:comment "An area defined on the basis of certain naturally occuring geographical features."@en ;
+                  rdfs:label "Natural Region"@en .
+
+
+###  https://w3id.org/tav#Ocean
+tav:Ocean rdf:type owl:Class ;
+          rdfs:subClassOf tav:WaterBody ;
+          rdfs:comment "A vast, continuous body of saltwater covering the Earth's surface."@en ;
+          rdfs:label "Ocean"@en .
+
+
+###  https://w3id.org/tav#Organization
+tav:Organization rdf:type owl:Class ;
+                 rdfs:subClassOf tav:Agent ;
+                 rdfs:comment "An organization, such as a company, institution, or group."@en ;
+                 rdfs:label "Organization"@en .
+
+
+###  https://w3id.org/tav#Painting
+tav:Painting rdf:type owl:Class ;
+             rdfs:subClassOf tav:CreativeWork ;
+             rdfs:comment "A visual artwork created through the application of paint or similar medium."@en ;
+             rdfs:label "Painting"@en .
+
+
+###  https://w3id.org/tav#Periodical
+tav:Periodical rdf:type owl:Class ;
+               rdfs:subClassOf tav:CollectedDocument ;
+               rdfs:comment "A group of related documents issued at regular intervals."@en ;
+               rdfs:label "Periodical"@en .
+
+
+###  https://w3id.org/tav#Person
+tav:Person rdf:type owl:Class ;
+           rdfs:subClassOf tav:Agent ;
+           rdfs:comment "A person (alive, dead, undead, or fictional)."@en ;
+           rdfs:label "Person"@en .
+
+
+###  https://w3id.org/tav#Plant
+tav:Plant rdf:type owl:Class ;
+          rdfs:subClassOf skos:Concept ;
+          rdfs:comment "A living organism that grows on the ground, typically having roots, stems, and leaves, and often producing flowers and seeds."@en ;
+          rdfs:label "Plant"@en .
+
+
+###  https://w3id.org/tav#Poem
+tav:Poem rdf:type owl:Class ;
+         rdfs:subClassOf tav:Document ;
+         rdfs:comment "A creative writing piece that uses language in a imaginative and symbolic way to express thoughts, feelings, and ideas, often with a rhythmic or lyrical quality."@en ;
+         rdfs:label "Poem"@en .
+
+
+###  https://w3id.org/tav#Region
+tav:Region rdf:type owl:Class ;
+           rdfs:comment "An area or space defined on the basis of their geographical or administratrative features."@en ;
+           rdfs:label "Region"@en ;
+           skos:altLabel "Place"@en .
+
+
+###  https://w3id.org/tav#Sea
+tav:Sea rdf:type owl:Class ;
+        rdfs:subClassOf tav:WaterBody ;
+        rdfs:comment "A smaller body of saltwater, usually connected to an ocean."@en ;
+        rdfs:label "Sea"@en .
+
+
+###  https://w3id.org/tav#Selector
+tav:Selector rdf:type owl:Class ;
+             rdfs:comment "A resource which describes the segment of interest in a specific representation of a resource."@en ;
+             rdfs:label "Selector"@en .
+
+
+###  https://w3id.org/tav#ShortStory
+tav:ShortStory rdf:type owl:Class ;
+               rdfs:subClassOf tav:Document ;
+               rdfs:comment "A brief work of fiction, characterized by its short length, written in narrative prose."@en ;
+               rdfs:label "Short Story"@en .
+
+
+###  https://w3id.org/tav#State
+tav:State rdf:type owl:Class ;
+          rdfs:subClassOf tav:AdministrativeRegion ;
+          rdfs:comment "A primary administrative division of a country."@en ;
+          rdfs:label "State"@en .
+
+
+###  https://w3id.org/tav#SubnationalRegion
+tav:SubnationalRegion rdf:type owl:Class ;
+                      rdfs:subClassOf tav:AdministrativeRegion ;
+                      rdfs:comment "A region within a country grouped on the basis of shared cultural or geographical characteristics, not necessarily administrative."@en ;
+                      rdfs:label "Subnational Region"@en .
+
+
+###  https://w3id.org/tav#Taxon
+tav:Taxon rdf:type owl:Class ;
+          owl:equivalentClass wd:Q16521 ;
+          rdfs:subClassOf skos:Concept ;
+          rdfs:comment "A group of organisms that form a natural, cohesive biological unit."@en ;
+          rdfs:label "Taxon"@en .
+
+
+###  https://w3id.org/tav#TextSelector
+tav:TextSelector rdf:type owl:Class ;
+                 rdfs:subClassOf tav:Selector ;
+                 rdfs:comment "A textual segment describing a certain textual range by quoting it exactly, and by including a textual range before or after (or both) the targeted range to distinguish between multiple copies of the same sequence of characters."@en ;
+                 rdfs:label "Text Selector"@en .
+
+
+###  https://w3id.org/tav#Town
+tav:Town rdf:type owl:Class ;
+         rdfs:subClassOf tav:AdministrativeRegion ;
+         rdfs:comment "A town is a type of a human settlement larger than villages and smaller than cities."@en ;
+         rdfs:label "Town"@en .
+
+
+###  https://w3id.org/tav#TreeMetonym
+tav:TreeMetonym rdf:type owl:Class ;
+                rdfs:subClassOf skos:Concept ;
+                rdfs:comment "Any part, component, structure of a tree or a collection of trees that represents its physical elements, or its aggregated grouping."@en ;
+                rdfs:label "Tree Metonym"@en ;
+                skos:example "Leaf, Branch, Foliage, Forest, Orchard"@en .
+
+
+###  https://w3id.org/tav#TreeSpecies
+tav:TreeSpecies rdf:type owl:Class ;
+                rdfs:subClassOf tav:Plant ;
+                rdfs:comment "An accepted taxonomic classification of a tree, representing a group of trees that share common characteristics, from morphological to genetic."@en ;
+                rdfs:label "Tree Species"@en ;
+                skos:note "A tree is a big plant with a stick up the middle. [Colin Tudge, The Secret Life of Trees, 2005]"@en .
+
+
+###  https://w3id.org/tav#WaterBody
+tav:WaterBody rdf:type owl:Class ;
+              rdfs:subClassOf tav:NaturalRegion ;
+              rdfs:comment "A body of water, such as a sea, ocean, or lake."@en ;
+              rdfs:label "Water Body"@en .
+
+
+###  https://w3id.org/tav#WoodenObject
+tav:WoodenObject rdf:type owl:Class ;
+                 rdfs:subClassOf skos:Concept ;
+                 rdfs:comment "A tangible object made primarily of wood, a natural material obtained from trees, which is often shaped, crafted, or manufactured to serve a specific purpose"@en ;
+                 rdfs:label "Wooden Object"@en .
+
+
+###  https://www.wikidata.org/entity/Q16521
+wd:Q16521 rdf:type owl:Class ;
+          rdfs:comment "A group of one or more organism(s), which a taxonomist adjudges to be a unit."@en ;
+          rdfs:label "Taxon"@en ;
+          skos:altLabel "Taxa"@en ,
+                        "Taxonomic Unit"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/resource/Arecaceae
+dbr:Arecaceae rdf:type owl:NamedIndividual ;
+              rdfs:comment "The Arecaceae is a family of perennial flowering plants in the monocot order Arecales. Their growth form can be climbers, shrubs, tree-like and stemless plants, all commonly known as palms. Those having a tree-like form are called palm trees. Currently, 181 genera with around 2,600 species are known, most of which are restricted to tropical and subtropical climates. Most palms are distinguished by their large, compound, evergreen leaves, known as fronds, arranged at the top of an unbranched stem. However, palms exhibit an enormous diversity in physical characteristics and inhabit nearly every type of habitat within their range, from rainforests to deserts."@en ;
+              rdfs:label "Arecaceae"@en .
+
+
+###  http://dbpedia.org/resource/Cupressus
+dbr:Cupressus rdf:type owl:NamedIndividual ;
+              rdfs:comment "Cupressus is one of several genera of evergreen conifers within the family Cupressaceae that have the common name cypress; for the others, see cypress. It is considered a polyphyletic group. Based on genetic and morphological analysis, the genus Cupressus is found in the subfamily Cupressoideae. The common name \"cypress\" comes via the Old French cipres from the Latin cyparissus, which is the latinisation of the Greek κυπάρισσος (kypárissos)."@en ;
+              rdfs:label "Cupressus"@en .
+
+
+###  http://dbpedia.org/resource/Tilia
+dbr:Tilia rdf:type owl:NamedIndividual ;
+          rdfs:comment "Tilia is a genus of about 30 species of trees or bushes, native throughout most of the temperate Northern Hemisphere. The tree is known as linden for the European species, and basswood for North American species. In Britain and Ireland they are commonly called lime trees, although they are not related to the citrus lime. The genus occurs in Europe and eastern North America, but the greatest species diversity is found in Asia. Under the Cronquist classification system, this genus was placed in the family Tiliaceae, but genetic research summarised by the Angiosperm Phylogeny Group has resulted in the incorporation of this genus, and of most of the previous family, into the Malvaceae."@en ;
+          rdfs:label "Tilia"@en .
+
+
+###  http://dbpedia.org/resource/Vladimir_Nabokov
+dbr:Vladimir_Nabokov rdf:type owl:NamedIndividual ;
+                     owl:sameAs tav:Nabokov ;
+                     rdfs:comment "Vladimir Vladimirovich Nabokov (Russian: Владимир Владимирович Набоков [vlɐˈdʲimʲɪr vlɐˈdʲimʲɪrəvʲɪtɕ nɐˈbokəf]; 22 April [O.S. 10 April] 1899 – 2 July 1977), also known by the pen name Vladimir Sirin (Владимир Сирин), was a Russian-American novelist, poet, translator, and entomologist. Born in Imperial Russia in 1899, Nabokov wrote his first nine novels in Russian (1926–1938) while living in Berlin, where he met his wife. He achieved international acclaim and prominence after moving to the United States, where he began writing in English. Nabokov became an American citizen in 1945 and lived mostly on the East Coast before returning to Europe in 1961, where he settled in Montreux, Switzerland."@en ;
+                     rdfs:label "Vladimir Nabokov"@en .
+
+
+###  https://w3id.org/tav#Anno_Mary01
+tav:Anno_Mary01 rdf:type owl:NamedIndividual ,
+                         tav:LiteraryAnnotation ;
+                tav:body tav:Mention_Mary01 ,
+                         tav:Mention_Mary02 ,
+                         tav:Mention_Mary03 ,
+                         tav:Mention_Mary04 ,
+                         tav:Mention_Mary05 ,
+                         tav:Mention_Mary06 ,
+                         tav:Mention_Mary07 ;
+                tav:target tav:FirstLove ,
+                           tav:LindenTree ,
+                           tav:StPetersburgOblast .
+
+
+###  https://w3id.org/tav#Anno_Mary02
+tav:Anno_Mary02 rdf:type owl:NamedIndividual ,
+                         tav:LiteraryAnnotation ;
+                tav:body tav:Mention_Mary08 ;
+                tav:target tav:Berlin ,
+                           tav:Frames ,
+                           tav:PalmTree .
+
+
+###  https://w3id.org/tav#Anno_Mary05
+tav:Anno_Mary05 rdf:type owl:NamedIndividual ,
+                         tav:LiteraryAnnotation ;
+                tav:body tav:Mention_Mary11 ,
+                         tav:Mention_Mary12 ,
+                         tav:Mention_Mary13 ;
+                tav:target tav:Crimea ,
+                           tav:CypressTree ,
+                           tav:Death .
+
+
+###  https://w3id.org/tav#Berlin
+tav:Berlin rdf:type owl:NamedIndividual ,
+                    tav:City ;
+           tav:containedInRegion tav:Germany ;
+           tav:name "Berlin"@en .
+
+
+###  https://w3id.org/tav#Bocklin
+tav:Bocklin rdf:type owl:NamedIndividual ,
+                     tav:Person ;
+            tav:referencedIn tav:Mary_Vintage ;
+            tav:name "Arnold Böcklin"@en .
+
+
+###  https://w3id.org/tav#Crimea
+tav:Crimea rdf:type owl:NamedIndividual ,
+                    tav:HistoricalOrCulturalRegion ;
+           tav:name "Crimea"@en .
+
+
+###  https://w3id.org/tav#CypressTree
+tav:CypressTree rdf:type owl:NamedIndividual ,
+                         tav:TreeSpecies ;
+                skos:broadMatch dbr:Cupressus ,
+                                wd:Q146911 ;
+                skos:exactMatch wd:Q147513 ;
+                tav:naturalizedToLocation tav:Crimea ;
+                tav:name "Cypress Tree"@en .
+
+
+###  https://w3id.org/tav#Death
+tav:Death rdf:type owl:NamedIndividual ,
+                   tav:LiteraryTheme ;
+          rdfs:label "Death"@en .
+
+
+###  https://w3id.org/tav#EnglishLanguage
+tav:EnglishLanguage rdf:type owl:NamedIndividual ,
+                             tav:Language ;
+                    tav:alternateName "en"@en ;
+                    tav:name "English"@en .
+
+
+###  https://w3id.org/tav#Europe
+tav:Europe rdf:type owl:NamedIndividual ,
+                    tav:Continent ;
+           tav:containsRegion tav:Crimea ,
+                              tav:Germany ,
+                              tav:Russia ;
+           tav:name "Europe"@en .
+
+
+###  https://w3id.org/tav#FirstLove
+tav:FirstLove rdf:type owl:NamedIndividual ,
+                       tav:LiteraryTheme ;
+              rdfs:label "First Love"@en .
+
+
+###  https://w3id.org/tav#Frames
+tav:Frames rdf:type owl:NamedIndividual ,
+                    tav:LiteraryTheme ;
+           rdfs:label "Frames"@en .
+
+
+###  https://w3id.org/tav#Germany
+tav:Germany rdf:type owl:NamedIndividual ,
+                     tav:Country ;
+            tav:name "Germany"@en .
+
+
+###  https://w3id.org/tav#IsleOfTheDead
+tav:IsleOfTheDead rdf:type owl:NamedIndividual ,
+                           tav:Painting ;
+                  owl:sameAs wd:Q669994 ;
+                  tav:containsReferenceTo tav:CypressTree ,
+                                          tav:Death ;
+                  tav:hasAuthor tav:Bocklin ;
+                  tav:name "Die Toteninsel"@de .
+
+
+###  https://w3id.org/tav#LindenTree
+tav:LindenTree rdf:type owl:NamedIndividual ,
+                        tav:TreeSpecies ;
+               skos:broadMatch dbr:Tilia ,
+                               wd:Q127849 ;
+               skos:closeMatch wd:Q158746 ;
+               skos:exactMatch wd:Q163760 ;
+               skos:relatedMatch wd:Q163981 ;
+               tav:naturalizedToLocation tav:StPetersburgOblast ;
+               tav:alternateName "Lime Tree"@en ;
+               tav:name "Linden Tree"@en .
+
+
+###  https://w3id.org/tav#Mary
+tav:Mary rdf:type owl:NamedIndividual ,
+                  tav:Book ;
+         tav:contentLanguage tav:EnglishLanguage ;
+         tav:hasAuthor tav:Nabokov ;
+         tav:hasTranslator tav:MichaelGlenny ,
+                           tav:Nabokov ;
+         tav:translationOfWork tav:Mashenka ;
+         tav:name "Mary"@en ;
+         tav:publicationYear "1970"^^xsd:gYear .
+
+
+###  https://w3id.org/tav#Mary_Vintage
+tav:Mary_Vintage rdf:type owl:NamedIndividual ,
+                          tav:Book ;
+                 tav:containsReferenceTo tav:IsleOfTheDead ;
+                 tav:contentLanguage tav:EnglishLanguage ;
+                 tav:hasAuthor tav:Nabokov ;
+                 tav:hasPublisher tav:VintageBooks ;
+                 tav:hasStoryLocation tav:StPetersburgOblast ;
+                 tav:versionOfWork tav:Mary ;
+                 tav:abbvTitle "Mary"@en ;
+                 tav:editionName "1st Vintage International ed."@en ;
+                 tav:name "Mary"@en ;
+                 tav:numberOfPages 114 ;
+                 tav:publicationYear "1989"^^xsd:gYear ;
+                 tav:wordCount 34805 .
+
+
+###  https://w3id.org/tav#Mashenka
+tav:Mashenka rdf:type owl:NamedIndividual ,
+                      tav:Book ;
+             tav:contentLanguage tav:RussianLanguage ;
+             tav:hasAuthor tav:Nabokov ;
+             tav:hasWorkTranslation tav:Mary ;
+             tav:name "Mashen’ka"@ru ;
+             tav:publicationYear "1926"^^xsd:gYear .
+
+
+###  https://w3id.org/tav#Mention_Mary01
+tav:Mention_Mary01 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LimeT.01 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary02
+tav:Mention_Mary02 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LindenT.01 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary03
+tav:Mention_Mary03 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LimeT.02 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary04
+tav:Mention_Mary04 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LindenT.02 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary05
+tav:Mention_Mary05 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LimeT.03 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary06
+tav:Mention_Mary06 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LindenT.03 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary07
+tav:Mention_Mary07 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.LimeT.04 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary08
+tav:Mention_Mary08 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.PalmT.01 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary11
+tav:Mention_Mary11 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.CypressT.01 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary12
+tav:Mention_Mary12 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.CypressT.02 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#Mention_Mary13
+tav:Mention_Mary13 rdf:type owl:NamedIndividual ,
+                            tav:Mention ;
+                   tav:selector tav:Phrase_Mary.Cypress.01 ;
+                   tav:source tav:Mary_Vintage .
+
+
+###  https://w3id.org/tav#MichaelGlenny
+tav:MichaelGlenny rdf:type owl:NamedIndividual ,
+                           tav:Person ;
+                  tav:name "Michael Glenny"@en .
+
+
+###  https://w3id.org/tav#NS_Mary-02.018
+tav:NS_Mary-02.018 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 2"^^xsd:string ;
+                   tav:pageNo 18 .
+
+
+###  https://w3id.org/tav#NS_Mary-04.032
+tav:NS_Mary-04.032 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 4"^^xsd:string ;
+                   tav:pageNo 32 .
+
+
+###  https://w3id.org/tav#NS_Mary-04.034
+tav:NS_Mary-04.034 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 4"^^xsd:string ;
+                   tav:pageNo 34 .
+
+
+###  https://w3id.org/tav#NS_Mary-04.036
+tav:NS_Mary-04.036 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 4"^^xsd:string ;
+                   tav:pageNo 36 .
+
+
+###  https://w3id.org/tav#NS_Mary-08.059
+tav:NS_Mary-08.059 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 8"^^xsd:string ;
+                   tav:pageNo 59 .
+
+
+###  https://w3id.org/tav#NS_Mary-09.067
+tav:NS_Mary-09.067 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 9"^^xsd:string ;
+                   tav:pageNo 67 .
+
+
+###  https://w3id.org/tav#NS_Mary-09.072
+tav:NS_Mary-09.072 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 9"^^xsd:string ;
+                   tav:pageNo 72 .
+
+
+###  https://w3id.org/tav#NS_Mary-13.089
+tav:NS_Mary-13.089 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 13"^^xsd:string ;
+                   tav:pageNo 89 .
+
+
+###  https://w3id.org/tav#NS_Mary-13.090
+tav:NS_Mary-13.090 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 13"^^xsd:string ;
+                   tav:pageNo 90 .
+
+
+###  https://w3id.org/tav#NS_Mary-16.108
+tav:NS_Mary-16.108 rdf:type owl:NamedIndividual ,
+                            tav:DocumentSegmentSelector ;
+                   tav:occursIn tav:Mary_Vintage ;
+                   tav:chapterLabel "Ch. 16"^^xsd:string ;
+                   tav:pageNo 108 .
+
+
+###  https://w3id.org/tav#Nabokov
+tav:Nabokov rdf:type owl:NamedIndividual ,
+                     tav:Person ;
+            owl:sameAs wd:Q36591 ;
+            tav:firstName "Vladimir Vladimirovich"@en ;
+            tav:givenName "Nabokov"@en ;
+            tav:name "Vladimir Vladimirovich Nabokov"@en ,
+                     "Владимир Набоков"@ru .
+
+
+###  https://w3id.org/tav#PalmTree
+tav:PalmTree rdf:type owl:NamedIndividual ,
+                      tav:TreeSpecies ;
+             skos:broadMatch dbr:Arecaceae ,
+                             wd:Q14080 ;
+             skos:relatedMatch wd:Q25292 ;
+             tav:exoticToLocation tav:Berlin ;
+             tav:name "Palm Tree"@en .
+
+
+###  https://w3id.org/tav#Phrase_Mary.Cypress.01
+tav:Phrase_Mary.Cypress.01 rdf:type owl:NamedIndividual ,
+                                    tav:TextSelector ;
+                           tav:occursIn tav:NS_Mary-04.036 ;
+                           tav:exactText "Böcklin's Isle of the Dead"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.CypressT.01
+tav:Phrase_Mary.CypressT.01 rdf:type owl:NamedIndividual ,
+                                     tav:TextSelector ;
+                            tav:occursIn tav:NS_Mary-13.089 ;
+                            tav:exactText "the cypresses"^^xsd:string ;
+                            tav:prefixText "about"^^xsd:string ;
+                            tav:suffixText "in the garden"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.CypressT.02
+tav:Phrase_Mary.CypressT.02 rdf:type owl:NamedIndividual ,
+                                     tav:TextSelector ;
+                            tav:occursIn tav:NS_Mary-13.090 ;
+                            tav:exactText "cypress avenues"^^xsd:string ;
+                            tav:prefixText "of the narrow"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LimeT.01
+tav:Phrase_Mary.LimeT.01 rdf:type owl:NamedIndividual ,
+                                  tav:TextSelector ;
+                         tav:occursIn tav:NS_Mary-04.032 ;
+                         tav:exactText "lime trees"^^xsd:string ;
+                         tav:prefixText "the tops of"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LimeT.02
+tav:Phrase_Mary.LimeT.02 rdf:type owl:NamedIndividual ,
+                                  tav:TextSelector ;
+                         tav:occursIn tav:NS_Mary-08.059 ;
+                         tav:exactText "lime trees"^^xsd:string ;
+                         tav:prefixText "under the"^^xsd:string ;
+                         tav:suffixText "on a broad terrace"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LimeT.03
+tav:Phrase_Mary.LimeT.03 rdf:type owl:NamedIndividual ,
+                                  tav:TextSelector ;
+                         tav:occursIn tav:NS_Mary-09.067 ;
+                         tav:exactText "the limes"^^xsd:string ;
+                         tav:prefixText "downpour surged through"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LimeT.04
+tav:Phrase_Mary.LimeT.04 rdf:type owl:NamedIndividual ,
+                                  tav:TextSelector ;
+                         tav:occursIn tav:NS_Mary-16.108 ;
+                         tav:exactText "lime trees"^^xsd:string ;
+                         tav:prefixText "dappled shadows of the"^^xsd:string ;
+                         tav:suffixText "in bloom"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LindenT.01
+tav:Phrase_Mary.LindenT.01 rdf:type owl:NamedIndividual ,
+                                    tav:TextSelector ;
+                           tav:occursIn tav:NS_Mary-04.034 ;
+                           tav:exactText "the lindens"^^xsd:string ;
+                           tav:prefixText "gap between"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LindenT.02
+tav:Phrase_Mary.LindenT.02 rdf:type owl:NamedIndividual ,
+                                    tav:TextSelector ;
+                           tav:occursIn tav:NS_Mary-08.059 ;
+                           tav:exactText "linden foliage"^^xsd:string ;
+                           tav:prefixText "at normal times was"^^xsd:string ;
+                           tav:suffixText "announced to Mary"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.LindenT.03
+tav:Phrase_Mary.LindenT.03 rdf:type owl:NamedIndividual ,
+                                    tav:TextSelector ;
+                           tav:occursIn tav:NS_Mary-09.072 ;
+                           tav:exactText "lindens"^^xsd:string ;
+                           tav:prefixText "under the"^^xsd:string ;
+                           tav:suffixText "of that spacious public park"^^xsd:string .
+
+
+###  https://w3id.org/tav#Phrase_Mary.PalmT.01
+tav:Phrase_Mary.PalmT.01 rdf:type owl:NamedIndividual ,
+                                  tav:TextSelector ;
+                         tav:occursIn tav:NS_Mary-02.018 ;
+                         tav:exactText "chocolate-brown palms"^^xsd:string .
+
+
+###  https://w3id.org/tav#Russia
+tav:Russia rdf:type owl:NamedIndividual ,
+                    tav:Country ;
+           tav:containsRegion tav:StPetersburgOblast ;
+           tav:name "Russia"@en .
+
+
+###  https://w3id.org/tav#RussianLanguage
+tav:RussianLanguage rdf:type owl:NamedIndividual ,
+                             tav:Language ;
+                    tav:alternateName "ru"@ru ;
+                    tav:name "Russian"@en .
+
+
+###  https://w3id.org/tav#StPetersburgOblast
+tav:StPetersburgOblast rdf:type owl:NamedIndividual ,
+                                tav:AdministrativeRegion ;
+                       tav:name "St. Petersburg Oblast"@en .
+
+
+###  https://w3id.org/tav#VintageBooks
+tav:VintageBooks rdf:type owl:NamedIndividual ,
+                          tav:Organization ;
+                 tav:name "Vintage Books"@en .
+
+
+###  https://www.wikidata.org/entity/Q127849
+wd:Q127849 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Tilia"@en ;
+           skos:altLabel "Lime genus"@en ,
+                         "Linden genus"@en .
+
+
+###  https://www.wikidata.org/entity/Q14080
+wd:Q14080 rdf:type owl:NamedIndividual ,
+                   wd:Q16521 ;
+          rdfs:label "Arecaceae"@en ;
+          skos:altLabel "palm trees"@en .
+
+
+###  https://www.wikidata.org/entity/Q146911
+wd:Q146911 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Cupressus"@en ;
+           skos:altLabel "Cypress"@en .
+
+
+###  https://www.wikidata.org/entity/Q147513
+wd:Q147513 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Cupressus sempervirens"@en ;
+           skos:altLabel "Mediterranean Cypress"@en .
+
+
+###  https://www.wikidata.org/entity/Q158746
+wd:Q158746 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Tilia cordata"@en ;
+           skos:altLabel "small-leaved lime"@en ,
+                         "small-leaved linden"@en .
+
+
+###  https://www.wikidata.org/entity/Q163760
+wd:Q163760 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Tilia × europaea"@en ;
+           skos:altLabel "Tilia x vulgaris"@en .
+
+
+###  https://www.wikidata.org/entity/Q163981
+wd:Q163981 rdf:type owl:NamedIndividual ,
+                    wd:Q16521 ;
+           rdfs:label "Tilia americana"@en ;
+           skos:altLabel "American basswood"@en .
+
+
+###  https://www.wikidata.org/entity/Q25292
+wd:Q25292 rdf:type owl:NamedIndividual ,
+                   wd:Q16521 ;
+          rdfs:label "Phoenix dactylifera"@en ;
+          skos:altLabel "date palm"@en .
+
+
+###  https://www.wikidata.org/entity/Q36591
+wd:Q36591 rdf:type owl:NamedIndividual ;
+          rdfs:label "Vladimir Nabokov"@en ;
+          skos:altLabel "Vladimir Vladimirovich Nabokov"@en .
+
+
+###  https://www.wikidata.org/entity/Q669994
+wd:Q669994 rdf:type owl:NamedIndividual ;
+           rdfs:comment "Painting series by Arnold Böcklin"@en ;
+           rdfs:label "Isle of the Dead"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
