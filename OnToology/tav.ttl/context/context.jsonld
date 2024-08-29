@@ -1,0 +1,415 @@
+{
+  "@context" : {
+    "Selector" : {
+      "@id" : "https://w3id.org/tav#Selector"
+    },
+    "scopeNote" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#scopeNote"
+    },
+    "publisherOf" : {
+      "@id" : "https://w3id.org/tav#publisherOf",
+      "@type" : "@id"
+    },
+    "Town" : {
+      "@id" : "https://w3id.org/tav#Town"
+    },
+    "semanticRelation" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#semanticRelation",
+      "@type" : "@id"
+    },
+    "publicationYear" : {
+      "@id" : "https://w3id.org/tav#publicationYear",
+      "@type" : "http://www.w3.org/2001/XMLSchema#gYear"
+    },
+    "Painting" : {
+      "@id" : "https://w3id.org/tav#Painting"
+    },
+    "example" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#example"
+    },
+    "Country" : {
+      "@id" : "https://w3id.org/tav#Country"
+    },
+    "body" : {
+      "@id" : "https://w3id.org/tav#body",
+      "@type" : "@id"
+    },
+    "Organization" : {
+      "@id" : "https://w3id.org/tav#Organization"
+    },
+    "mappingRelation" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#mappingRelation",
+      "@type" : "@id"
+    },
+    "hasWorkVersion" : {
+      "@id" : "https://w3id.org/tav#hasWorkVersion",
+      "@type" : "@id"
+    },
+    "Thing" : {
+      "@id" : "http://www.w3.org/2002/07/owl#Thing"
+    },
+    "OrderedCollection" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#OrderedCollection"
+    },
+    "Q16521" : {
+      "@id" : "https://www.wikidata.org/entity/Q16521"
+    },
+    "relatedMatch" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#relatedMatch",
+      "@type" : "@id"
+    },
+    "SubnationalRegion" : {
+      "@id" : "https://w3id.org/tav#SubnationalRegion"
+    },
+    "hasStoryLocation" : {
+      "@id" : "https://w3id.org/tav#hasStoryLocation",
+      "@type" : "@id"
+    },
+    "containsRegion" : {
+      "@id" : "https://w3id.org/tav#containsRegion",
+      "@type" : "@id"
+    },
+    "translationOfWork" : {
+      "@id" : "https://w3id.org/tav#translationOfWork",
+      "@type" : "@id"
+    },
+    "Mention" : {
+      "@id" : "https://w3id.org/tav#Mention"
+    },
+    "abbvTitle" : {
+      "@id" : "https://w3id.org/tav#abbvTitle"
+    },
+    "containsReferenceTo" : {
+      "@id" : "https://w3id.org/tav#containsReferenceTo",
+      "@type" : "@id"
+    },
+    "altLabel" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#altLabel"
+    },
+    "exoticToLocation" : {
+      "@id" : "https://w3id.org/tav#exoticToLocation",
+      "@type" : "@id"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "TreeSpecies" : {
+      "@id" : "https://w3id.org/tav#TreeSpecies"
+    },
+    "narrower" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#narrower",
+      "@type" : "@id"
+    },
+    "GeographicalRegion" : {
+      "@id" : "https://w3id.org/tav#GeographicalRegion"
+    },
+    "competencyQuestion" : {
+      "@id" : "https://w3id.org/tav#competencyQuestion"
+    },
+    "translatorOf" : {
+      "@id" : "https://w3id.org/tav#translatorOf",
+      "@type" : "@id"
+    },
+    "Poem" : {
+      "@id" : "https://w3id.org/tav#Poem"
+    },
+    "Concept" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#Concept"
+    },
+    "related" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#related",
+      "@type" : "@id"
+    },
+    "Plant" : {
+      "@id" : "https://w3id.org/tav#Plant"
+    },
+    "occursIn" : {
+      "@id" : "https://w3id.org/tav#occursIn",
+      "@type" : "@id"
+    },
+    "Taxon" : {
+      "@id" : "https://w3id.org/tav#Taxon"
+    },
+    "prefixText" : {
+      "@id" : "https://w3id.org/tav#prefixText",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "exactMatch" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#exactMatch",
+      "@type" : "@id"
+    },
+    "CollectedDocument" : {
+      "@id" : "https://w3id.org/tav#CollectedDocument"
+    },
+    "AdministrativeRegion" : {
+      "@id" : "https://w3id.org/tav#AdministrativeRegion"
+    },
+    "Person" : {
+      "@id" : "https://w3id.org/tav#Person"
+    },
+    "note" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#note"
+    },
+    "numberOfPages" : {
+      "@id" : "https://w3id.org/tav#numberOfPages",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "naturalizedToLocation" : {
+      "@id" : "https://w3id.org/tav#naturalizedToLocation",
+      "@type" : "@id"
+    },
+    "closeMatch" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#closeMatch",
+      "@type" : "@id"
+    },
+    "DramaticPlay" : {
+      "@id" : "https://w3id.org/tav#DramaticPlay"
+    },
+    "Book" : {
+      "@id" : "https://w3id.org/tav#Book"
+    },
+    "Agent" : {
+      "@id" : "https://w3id.org/tav#Agent"
+    },
+    "hasItem" : {
+      "@id" : "https://w3id.org/tav#hasItem",
+      "@type" : "@id"
+    },
+    "hasTranslator" : {
+      "@id" : "https://w3id.org/tav#hasTranslator",
+      "@type" : "@id"
+    },
+    "authorOf" : {
+      "@id" : "https://w3id.org/tav#authorOf",
+      "@type" : "@id"
+    },
+    "chapterLabel" : {
+      "@id" : "https://w3id.org/tav#chapterLabel",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "creator" : {
+      "@id" : "http://purl.org/dc/terms/creator"
+    },
+    "MountainRange" : {
+      "@id" : "https://w3id.org/tav#MountainRange"
+    },
+    "givenName" : {
+      "@id" : "https://w3id.org/tav#givenName"
+    },
+    "name" : {
+      "@id" : "https://w3id.org/tav#name"
+    },
+    "narrowMatch" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#narrowMatch",
+      "@type" : "@id"
+    },
+    "Article" : {
+      "@id" : "https://w3id.org/tav#Article"
+    },
+    "NaturalRegion" : {
+      "@id" : "https://w3id.org/tav#NaturalRegion"
+    },
+    "CreativeWork" : {
+      "@id" : "https://w3id.org/tav#CreativeWork"
+    },
+    "hasAuthor" : {
+      "@id" : "https://w3id.org/tav#hasAuthor",
+      "@type" : "@id"
+    },
+    "firstName" : {
+      "@id" : "https://w3id.org/tav#firstName"
+    },
+    "totalItems" : {
+      "@id" : "https://w3id.org/tav#totalItems",
+      "@type" : "http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+    },
+    "characterIn" : {
+      "@id" : "https://w3id.org/tav#characterIn",
+      "@type" : "@id"
+    },
+    "definition" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#definition"
+    },
+    "pageNo" : {
+      "@id" : "https://w3id.org/tav#pageNo",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "CoastalArea" : {
+      "@id" : "https://w3id.org/tav#CoastalArea"
+    },
+    "hasPublisher" : {
+      "@id" : "https://w3id.org/tav#hasPublisher",
+      "@type" : "@id"
+    },
+    "ShortStory" : {
+      "@id" : "https://w3id.org/tav#ShortStory"
+    },
+    "title" : {
+      "@id" : "http://purl.org/dc/terms/title"
+    },
+    "source" : {
+      "@id" : "https://w3id.org/tav#source",
+      "@type" : "@id"
+    },
+    "placeOfPublication" : {
+      "@id" : "https://w3id.org/tav#placeOfPublication",
+      "@type" : "@id"
+    },
+    "suffixText" : {
+      "@id" : "https://w3id.org/tav#suffixText",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Sea" : {
+      "@id" : "https://w3id.org/tav#Sea"
+    },
+    "broadMatch" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#broadMatch",
+      "@type" : "@id"
+    },
+    "hasWorkTranslation" : {
+      "@id" : "https://w3id.org/tav#hasWorkTranslation",
+      "@type" : "@id"
+    },
+    "target" : {
+      "@id" : "https://w3id.org/tav#target",
+      "@type" : "@id"
+    },
+    "Continent" : {
+      "@id" : "https://w3id.org/tav#Continent"
+    },
+    "bookPart" : {
+      "@id" : "https://w3id.org/tav#bookPart",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "date" : {
+      "@id" : "http://purl.org/dc/terms/date"
+    },
+    "seeAlso" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#seeAlso"
+    },
+    "contentLanguage" : {
+      "@id" : "https://w3id.org/tav#contentLanguage",
+      "@type" : "@id"
+    },
+    "Periodical" : {
+      "@id" : "https://w3id.org/tav#Periodical"
+    },
+    "WaterBody" : {
+      "@id" : "https://w3id.org/tav#WaterBody"
+    },
+    "containedInRegion" : {
+      "@id" : "https://w3id.org/tav#containedInRegion",
+      "@type" : "@id"
+    },
+    "Anthology" : {
+      "@id" : "https://w3id.org/tav#Anthology"
+    },
+    "TextSelector" : {
+      "@id" : "https://w3id.org/tav#TextSelector"
+    },
+    "City" : {
+      "@id" : "https://w3id.org/tav#City"
+    },
+    "wordCount" : {
+      "@id" : "https://w3id.org/tav#wordCount",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Language" : {
+      "@id" : "https://w3id.org/tav#Language"
+    },
+    "State" : {
+      "@id" : "https://w3id.org/tav#State"
+    },
+    "broader" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#broader",
+      "@type" : "@id"
+    },
+    "HistoricalOrCulturalRegion" : {
+      "@id" : "https://w3id.org/tav#HistoricalOrCulturalRegion"
+    },
+    "LiteraryTheme" : {
+      "@id" : "https://w3id.org/tav#LiteraryTheme"
+    },
+    "LiteraryAnnotation" : {
+      "@id" : "https://w3id.org/tav#LiteraryAnnotation"
+    },
+    "selector" : {
+      "@id" : "https://w3id.org/tav#selector",
+      "@type" : "@id"
+    },
+    "compositionYear" : {
+      "@id" : "https://w3id.org/tav#compositionYear",
+      "@type" : "http://www.w3.org/2001/XMLSchema#gYear"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "bodyValue" : {
+      "@id" : "https://w3id.org/tav#bodyValue",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Document" : {
+      "@id" : "https://w3id.org/tav#Document"
+    },
+    "TreeMetonym" : {
+      "@id" : "https://w3id.org/tav#TreeMetonym"
+    },
+    "referencedIn" : {
+      "@id" : "https://w3id.org/tav#referencedIn",
+      "@type" : "@id"
+    },
+    "contributor" : {
+      "@id" : "http://purl.org/dc/terms/contributor"
+    },
+    "numberedSection" : {
+      "@id" : "https://w3id.org/tav#numberedSection",
+      "@type" : "http://www.w3.org/2001/XMLSchema#float"
+    },
+    "Lake" : {
+      "@id" : "https://w3id.org/tav#Lake"
+    },
+    "exactText" : {
+      "@id" : "https://w3id.org/tav#exactText",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "versionOfWork" : {
+      "@id" : "https://w3id.org/tav#versionOfWork",
+      "@type" : "@id"
+    },
+    "Region" : {
+      "@id" : "https://w3id.org/tav#Region"
+    },
+    "alternateName" : {
+      "@id" : "https://w3id.org/tav#alternateName"
+    },
+    "prefLabel" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#prefLabel"
+    },
+    "description" : {
+      "@id" : "http://purl.org/dc/terms/description"
+    },
+    "treeProductOf" : {
+      "@id" : "https://w3id.org/tav#treeProductOf",
+      "@type" : "@id"
+    },
+    "Ocean" : {
+      "@id" : "https://w3id.org/tav#Ocean"
+    },
+    "DocumentSegmentSelector" : {
+      "@id" : "https://w3id.org/tav#DocumentSegmentSelector"
+    },
+    "Collection" : {
+      "@id" : "http://www.w3.org/2004/02/skos/core#Collection"
+    },
+    "hasCharacter" : {
+      "@id" : "https://w3id.org/tav#hasCharacter",
+      "@type" : "@id"
+    },
+    "WoodenObject" : {
+      "@id" : "https://w3id.org/tav#WoodenObject"
+    },
+    "editionName" : {
+      "@id" : "https://w3id.org/tav#editionName"
+    }
+  }
+}

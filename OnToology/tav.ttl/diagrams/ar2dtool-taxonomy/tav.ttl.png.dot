@@ -1,0 +1,43 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "tav:Book" "tav:TreeSpecies" "tav:TextSelector" "tav:Anthology" "tav:AdministrativeRegion" "tav:Agent" "tav:Country" "tav:CollectedDocument" "tav:WoodenObject" "tav:TreeMetonym" "tav:HistoricalOrCulturalRegion" "tav:DocumentSegmentSelector" "tav:LiteraryTheme" "tav:Organization" "tav:Taxon" "tav:CreativeWork" "tav:DramaticPlay" "tav:Ocean" "tav:Town" "tav:Lake" "tav:Person" "tav:Poem" "tav:GeographicalRegion" "skos:Concept" "tav:NaturalRegion" "tav:MountainRange" "tav:Selector" "tav:State" "tav:Continent" "tav:Article" "tav:Periodical" "tav:WaterBody" "tav:CoastalArea" "tav:Document" "skos:OrderedCollection" "tav:SubnationalRegion" "skos:Collection" "tav:Painting" "tav:ShortStory" "tav:Sea" "tav:Plant" "tav:Region" "tav:City" ; /*classes style*/
+	"tav:NaturalRegion" -> "tav:GeographicalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Town" -> "tav:AdministrativeRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Sea" -> "tav:WaterBody" [ label = "rdfs:subClassOf" ];
+	"tav:City" -> "tav:AdministrativeRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Anthology" -> "tav:CollectedDocument" [ label = "rdfs:subClassOf" ];
+	"tav:Plant" -> "skos:Concept" [ label = "rdfs:subClassOf" ];
+	"tav:State" -> "tav:AdministrativeRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Taxon" -> "skos:Concept" [ label = "rdfs:subClassOf" ];
+	"tav:TreeMetonym" -> "skos:Concept" [ label = "rdfs:subClassOf" ];
+	"tav:Ocean" -> "tav:WaterBody" [ label = "rdfs:subClassOf" ];
+	"tav:TextSelector" -> "tav:Selector" [ label = "rdfs:subClassOf" ];
+	"tav:HistoricalOrCulturalRegion" -> "tav:GeographicalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:CoastalArea" -> "tav:NaturalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Country" -> "tav:AdministrativeRegion" [ label = "rdfs:subClassOf" ];
+	"tav:MountainRange" -> "tav:NaturalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:Book" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:Article" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:Person" -> "tav:Agent" [ label = "rdfs:subClassOf" ];
+	"tav:TreeSpecies" -> "tav:Plant" [ label = "rdfs:subClassOf" ];
+	"tav:WaterBody" -> "tav:NaturalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:DramaticPlay" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:Periodical" -> "tav:CollectedDocument" [ label = "rdfs:subClassOf" ];
+	"tav:Lake" -> "tav:WaterBody" [ label = "rdfs:subClassOf" ];
+	"tav:Painting" -> "tav:CreativeWork" [ label = "rdfs:subClassOf" ];
+	"tav:LiteraryTheme" -> "skos:Concept" [ label = "rdfs:subClassOf" ];
+	"tav:Poem" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:WoodenObject" -> "skos:Concept" [ label = "rdfs:subClassOf" ];
+	"skos:OrderedCollection" -> "skos:Collection" [ label = "rdfs:subClassOf" ];
+	"tav:ShortStory" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:Organization" -> "tav:Agent" [ label = "rdfs:subClassOf" ];
+	"tav:Document" -> "tav:CreativeWork" [ label = "rdfs:subClassOf" ];
+	"tav:DocumentSegmentSelector" -> "tav:Selector" [ label = "rdfs:subClassOf" ];
+	"tav:CollectedDocument" -> "tav:Document" [ label = "rdfs:subClassOf" ];
+	"tav:AdministrativeRegion" -> "tav:Region" [ label = "rdfs:subClassOf" ];
+	"tav:Continent" -> "tav:NaturalRegion" [ label = "rdfs:subClassOf" ];
+	"tav:SubnationalRegion" -> "tav:AdministrativeRegion" [ label = "rdfs:subClassOf" ];
+	"tav:GeographicalRegion" -> "tav:Region" [ label = "rdfs:subClassOf" ];
+
+}
